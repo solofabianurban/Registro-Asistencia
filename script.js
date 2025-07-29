@@ -16,7 +16,7 @@ function iniciarEscaneo(cameraId) {
   scanner.addListener('scan', function(content) {
     document.getElementById("mensaje").textContent = "Registrando asistencia...";
 
-    fetch("https://script.google.com/macros/s/AKfycbzXSwB3dEwS1v1s8AjPujf13D7TUAmVlgmMhb-Uf-byAzSiua1pkXYkhiArOoeUwIu6FA/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxIcq9rLOcWLKk_R0IgrwAX_Utxw4_9LhbdfFs86TGrTqXjDjoPVb9cq4HXPTVpkEadWg/exec", {
       method: "POST",
       body: JSON.stringify({ nombre: content }),
       headers: { "Content-Type": "application/json" }
