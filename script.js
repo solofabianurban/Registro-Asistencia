@@ -33,13 +33,17 @@ function iniciarEscaneo(cameraId) {
   });
 
   Instascan.Camera.getCameras().then(function(cameras) {
-    const selected = cameras.find(camera => camera.id === cameraId);
-    if (selected) {
-      scanner.start(selected);
-    } else {
-      console.log('No se pudo iniciar la cámara seleccionada');
-    }
-  }).catch(function(error) {
-    console.error(error);
-  });
+    const html5QrCode = new Html5Qrcode("reader");
+  html5QrCode.start(
+  { facingMode: "environment" }, // usa la cámara trasera
+  {
+    fps: 10,
+    qrbox: { width: 250, height: 250 }
+  },
+  onScanSuccess,
+  onScanFailure
+).catch(err => {
+  console.error("Error al iniciar el escáner:", err);
+});
+
 }
